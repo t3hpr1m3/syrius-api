@@ -4,3 +4,8 @@ services:
     extends:
       file: docker-compose.common.yml
       service: app
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+    - MIX_ENV=test

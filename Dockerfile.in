@@ -1,6 +1,8 @@
-FROM msaraiva/elixir-dev:1.3.4
+FROM jdubz/elixir-dev:1.5.1
 
 MAINTAINER Josh Williams <vmizzle@gmail.com>
+
+RUN apk --update add inotify-tools && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app
 RUN mkdir -p /music
@@ -10,6 +12,9 @@ WORKDIR /usr/src/app
 COPY mix.exs /usr/src/app
 COPY mix.lock /usr/src/app
 
+ENV MIX_ENV=mixenv
+
+RUN mix local.hex --force
 RUN yes | mix deps.get
 
 RUN mix deps.compile

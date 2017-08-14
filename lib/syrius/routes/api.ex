@@ -1,5 +1,6 @@
-defmodule Syrius.Api do
+defmodule Syrius.Routes.Api do
   use Plug.Router
+  require Logger
 
   plug :match
   plug :dispatch

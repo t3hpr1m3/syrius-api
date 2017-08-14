@@ -7,7 +7,7 @@ defmodule Syrius.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
   # Configuration for the OTP application
@@ -15,7 +15,7 @@ defmodule Syrius.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications:
-        [:logger, :cowboy, :plug],
+        [:logger, :cowboy, :plug, :fs],
         mod: {Syrius, []}
     ]
   end
@@ -32,6 +32,7 @@ defmodule Syrius.Mixfile do
   defp deps do
     [{:cowboy, "~> 1.0"},
      {:distillery, "~> 0.10"},
-     {:plug, "~> 1.1"}]
+     {:plug, "~> 1.1"},
+     {:fs, github: 'synrc/fs'}]
   end
 end
